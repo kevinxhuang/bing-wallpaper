@@ -10,7 +10,7 @@ IMAGE_API = '/HPImageArchive.aspx?format=xml&idx=%d&n=%d&mkt=%s'
 
 logger = log.Logger(__file__, '../wallpaper.log')
 
-def get_images(idx=1, n=8, mkt='en-US'):
+def get_images(idx=1, n=8, mkt='zh-CN'):
 
     images = []
 

@@ -2,6 +2,7 @@
 
 from bingwallpaper import *
 from downloader import *
+from wallpaper import *
 import os
 
 logger = log.Logger(__file__, '../wallpaper.log')
@@ -19,6 +20,15 @@ if __name__ == '__main__':
             count += 1
 
     logger.info('Total %d images downloaded.', count)
+
+    downloaded_images = os.listdir('../images/')
+    if len(downloaded_images) > 0:
+        downloaded_images = sorted(downloaded_images, reverse=True)
+        wallpaper_image = os.path.join('../images/', downloaded_images[0])
+        set_wallpaper(os.path.abspath(wallpaper_image))
+        logger.info('Set %s to be wallpaper', wallpaper_image)
+
+
 
 
 
