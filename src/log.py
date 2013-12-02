@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 
 import logging
+import os
 
 class Logger(object):
 
     def __init__(self, logger_name, log_file=None, log_level=logging.INFO):
+
         self._logger = logging.getLogger(logger_name)
 
         log_format = logging.Formatter('[%(asctime)s - %(levelname)s - %(module)s] %(message)s')
@@ -13,7 +15,8 @@ class Logger(object):
         self._logger.addHandler(stream_handler)
 
         if not log_file is None:
-            file_handler = logging.FileHandler(log_file, 'a', 'utf-8')
+
+            file_handler = logging.FileHandler(os.path.join(os.path.dirname(__file__), log_file), 'a', 'utf-8')
             self._logger.addHandler(file_handler)
             file_handler.setFormatter(log_format)
 
